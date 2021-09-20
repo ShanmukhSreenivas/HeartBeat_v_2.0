@@ -29,7 +29,7 @@ import {
   FaBluetooth
 } from 'react-icons/fa';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
-
+import Gauge from './gauge_final'
 import GaugeDemo from './gauge_main';
 function StatCard({ bgColor }) {
   return (
@@ -131,25 +131,25 @@ function App() {
           <StatCard statNumber={1342} />
           <StatCard statNumber={1342} />
         <RowHeadings heading="P Mover" icon={<FaBus />} />
-        <GaugeDemo bgColor={highlightColor} arcLim={0.5} percentage={0.6}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.8} percentage={0.6}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.5} percentage={0.5}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.7} percentage={0.3}/>
+        <Gauge min={0} max={303} lim={250} value={250}/>
+              <Gauge min={0} max={303} lim={200} value={250}/>
+              <Gauge min={0} max={303} lim={200} value={190}/>
+              <Gauge min={0} max={303} lim={200} value={260}/>
         <RowHeadings heading="P BB" icon={<FaBus />} />
-        <GaugeDemo bgColor={highlightColor} arcLim={0.5} percentage={0.6}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.8} percentage={0.6}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.7} percentage={0.3}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.5} percentage={0.5}/>
+        <Gauge min={0} max={78} lim={70} value={75}/>
+              <Gauge min={0} max={78} lim={60} value={75}/>
+              <Gauge min={0} max={78} lim={60} value={55}/>
+              <Gauge min={0} max={78} lim={73} value={75}/>
         <RowHeadings heading="P Vroom" icon={<FaRestroom />} />
-        <GaugeDemo bgColor={highlightColor} arcLim={0.5} percentage={0.6}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.5} percentage={0.5}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.8} percentage={0.6}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.7} percentage={0.3}/>
+        <Gauge min={0} max={129} lim={120} value={60}/>
+              <Gauge min={0} max={129} lim={90} value={60}/>
+              <Gauge min={0} max={129} lim={90} value={60}/>
+              <Gauge min={0} max={129} lim={120} value={125}/>
         <RowHeadings heading="KATS" icon={<FaTrain />} />
-        <GaugeDemo bgColor={highlightColor} arcLim={0.8} percentage={0.6}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.7} percentage={0.3}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.5} percentage={0.6}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.5} percentage={0.5}/>
+        <Gauge min={0} max={129} lim={120} value={60}/>
+              <Gauge min={0} max={129} lim={120} value={125}/>
+              <Gauge min={0} max={129} lim={90} value={60}/>
+              <Gauge min={0} max={129} lim={90} value={60}/>
 
         <RowHeadings
           heading="Departure"
@@ -166,20 +166,20 @@ function App() {
         <RowHeadings heading="2100-2400" icon={<FaMoon />} />
 
         <RowHeadings heading="Check In" icon={<FaMoneyCheck />} />
-        <GaugeDemo bgColor={highlightColor} arcLim={0.8} percentage={0.6}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.5} percentage={0.6}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.7} percentage={0.3}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.5} percentage={0.5}/>
+        <Gauge min={0} max={303} lim={250} value={250}/>
+              <Gauge min={0} max={303} lim={200} value={250}/>
+              <Gauge min={0} max={303} lim={200} value={190}/>
+              <Gauge min={0} max={303} lim={200} value={260}/>
         <RowHeadings heading="Security" icon={<FaShieldAlt />} />
-        <GaugeDemo bgColor={highlightColor} arcLim={0.8} percentage={0.6}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.7} percentage={0.3}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.5} percentage={0.5}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.5} percentage={0.6}/>
+        <Gauge min={0} max={303} lim={250} value={250}/>
+              <Gauge min={0} max={303} lim={200} value={250}/>
+              <Gauge min={0} max={303} lim={200} value={190}/>
+              <Gauge min={0} max={303} lim={200} value={260}/>
         <RowHeadings heading="Immigration" icon={<FaPassport />} />
-        <GaugeDemo bgColor={highlightColor} arcLim={0.5} percentage={0.6}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.8} percentage={0.6}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.7} percentage={0.3}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.5} percentage={0.5}/>
+        <Gauge min={0} max={303} lim={250} value={250}/>
+              <Gauge min={0} max={303} lim={200} value={250}/>
+              <Gauge min={0} max={303} lim={200} value={190}/>
+              <Gauge min={0} max={303} lim={200} value={260}/>
         <RowHeadings
           heading="Arrival"
           icon={<FaPlaneArrival />}
@@ -195,15 +195,15 @@ function App() {
         <RowHeadings heading="1500-2100" icon={<FaCloudMoon />} />
         <RowHeadings heading="2100-2400" icon={<FaMoon />} />
         <RowHeadings heading="Immigration" icon={<FaPassport />} />
-        <GaugeDemo bgColor={highlightColor} arcLim={0.5} percentage={0.6}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.5} percentage={0.5}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.8} percentage={0.6}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.7} percentage={0.3}/>
+        <Gauge min={0} max={303} lim={250} value={250}/>
+              <Gauge min={0} max={303} lim={200} value={250}/>
+              <Gauge min={0} max={303} lim={200} value={190}/>
+              <Gauge min={0} max={303} lim={200} value={260}/>
         <RowHeadings heading="Luggage Claim" icon={<FaLuggageCart />} />
-        <GaugeDemo bgColor={highlightColor} arcLim={0.5} percentage={0.6}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.8} percentage={0.6}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.7} percentage={0.3}/>
-        <GaugeDemo bgColor={highlightColor} arcLim={0.5} percentage={0.5}/>
+        <Gauge min={0} max={303} lim={250} value={250}/>
+              <Gauge min={0} max={303} lim={200} value={250}/>
+              <Gauge min={0} max={303} lim={200} value={190}/>
+              <Gauge min={0} max={303} lim={200} value={260}/>
       </Grid>
     </>
   );
