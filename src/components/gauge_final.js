@@ -43,7 +43,7 @@ export default function Gauge({ min, max, lim, value}) {
             return segment_colors
         }
         else{
-            segment_colors = ['#eb2d30','#eb2d30','black','#eb2d30','#edeceb','#edeceb']            
+            segment_colors = ['#ff0000','#ff0000','black','#ff0000','#edeceb','#edeceb']            
             return segment_colors
         }
 
