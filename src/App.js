@@ -35,10 +35,10 @@ function App() {
           </TabList>
           <TabPanels>
             <TabPanel>
-              {width > '1366' ? <Prototype_Single /> : <Prototype />}
+              {width > '1024' ? <Prototype_Single /> : <Prototype />}
             </TabPanel>
             <TabPanel>
-            {width > '1366' ? <Prototype_Single /> : <Prototype />}
+            {width > '1024' ? <Prototype_Single /> : <Prototype />}
             </TabPanel>
           </TabPanels>
         </Tabs>
