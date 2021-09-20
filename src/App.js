@@ -19,9 +19,12 @@ import Prototype_side from './components/prototype_side';
 function App() {
 
   const [width, setWidth] = useState();
+  const [height, setHeight] = useState();
 
   useEffect(() => {
     setWidth(window.innerWidth)
+    setHeight(window.innerHeight)
+
     console.log(width)
   })
   return (
@@ -35,10 +38,10 @@ function App() {
           </TabList>
           <TabPanels>
             <TabPanel>
-              {width > '1024' ? <Prototype_Single /> : <Prototype />}
+              {width > height ? <Prototype_Single /> : <Prototype />}
             </TabPanel>
             <TabPanel>
-            {width > '1024' ? <Prototype_Single /> : <Prototype />}
+            {width > height ? <Prototype_Single /> : <Prototype />}
             </TabPanel>
           </TabPanels>
         </Tabs>
