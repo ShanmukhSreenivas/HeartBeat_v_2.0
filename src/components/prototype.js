@@ -4,8 +4,6 @@ import {
   Grid,
   Text,
   useColorModeValue,
-  Divider,
-  Heading,
 } from '@chakra-ui/react';
 import { Stat, StatNumber, StatHelpText } from '@chakra-ui/react';
 import {
@@ -26,21 +24,17 @@ import {
   FaMoneyCheck,
   FaPassport,
   FaRestroom,
-  FaBluetooth
 } from 'react-icons/fa';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
 import Gauge from './gauge_final'
-import GaugeDemo from './gauge_main';
 function StatCard({ bgColor }) {
   return (
     <Stat 
       align="center"
       bg={bgColor}
       py="2"
-      border="2px"
-      borderColor="white"
-      borderRadius="5px"
       size = {['sm','md','lg']}
+      marginLeft='30px'
     >
       <StatNumber fontSize={["md", "lg", "3xl"]}>1342</StatNumber>
       <StatHelpText fontSize={["sm", "md", "xl"]}>
@@ -93,7 +87,8 @@ function RowHeadings({ heading, icon, bgColor }) {
 }
 function App() {
   // const highlightColor = useColorModeValue('blue.200', 'blue.800');
-  const highlightColor = useColorModeValue('white', 'white');
+  const highlightColor = useColorModeValue('white', 'black');
+  const textColor = useColorModeValue('black', 'white');
 
   return (
     <>
@@ -107,11 +102,7 @@ function App() {
         />
 
         <RowHeadings heading="0000-0800" icon={<FaCloudSun />} />
-        <RowHeadings
-          heading="0800-1500"
-          icon={<FaSun />}
-          bgColor={highlightColor}
-        />
+        <RowHeadings heading="0800-1500" icon={<FaSun />} />
         <RowHeadings heading="1500-2100" icon={<FaCloudMoon />} />
         <RowHeadings heading="2100-2400" icon={<FaMoon />} />
 
@@ -131,10 +122,10 @@ function App() {
           <StatCard statNumber={1342} />
           <StatCard statNumber={1342} />
         <RowHeadings heading="P Mover" icon={<FaBus />} />
-        <Gauge min={0} max={303} lim={250} value={250}/>
-              <Gauge min={0} max={303} lim={200} value={250}/>
-              <Gauge min={0} max={303} lim={200} value={190}/>
-              <Gauge min={0} max={303} lim={200} value={260}/>
+              <Gauge min={0} max={303} lim={250} value={250} />
+              <Gauge min={0} max={303} lim={200} value={250} />
+              <Gauge min={0} max={303} lim={200} value={190} />
+              <Gauge min={0} max={303} lim={200} value={260} />
         <RowHeadings heading="P BB" icon={<FaBus />} />
         <Gauge min={0} max={78} lim={70} value={75}/>
               <Gauge min={0} max={78} lim={60} value={75}/>
@@ -157,11 +148,7 @@ function App() {
           bgColor='blue.200'
         />
         <RowHeadings heading="0000-0800" icon={<FaCloudSun />} />
-        <RowHeadings
-          heading="0800-1500"
-          icon={<FaSun />}
-          bgColor={highlightColor}
-        />
+        <RowHeadings heading="0800-1500" icon={<FaSun />} />
         <RowHeadings heading="1500-2100" icon={<FaCloudMoon />} />
         <RowHeadings heading="2100-2400" icon={<FaMoon />} />
 
@@ -187,15 +174,11 @@ function App() {
         />
 
         <RowHeadings heading="0000-0800" icon={<FaCloudSun />} />
-        <RowHeadings
-          heading="0800-1500"
-          icon={<FaSun />}
-          bgColor={highlightColor}
-        />
+        <RowHeadings heading="0800-1500" icon={<FaSun />} />
         <RowHeadings heading="1500-2100" icon={<FaCloudMoon />} />
         <RowHeadings heading="2100-2400" icon={<FaMoon />} />
         <RowHeadings heading="Immigration" icon={<FaPassport />} />
-        <Gauge min={0} max={303} lim={250} value={250}/>
+              <Gauge min={0} max={303} lim={250} value={250}/>
               <Gauge min={0} max={303} lim={200} value={250}/>
               <Gauge min={0} max={303} lim={200} value={190}/>
               <Gauge min={0} max={303} lim={200} value={260}/>

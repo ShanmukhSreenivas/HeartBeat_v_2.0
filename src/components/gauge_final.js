@@ -1,7 +1,11 @@
 import ReactSpeedometer from "react-d3-speedometer"
+import { useColorModeValue } from '@chakra-ui/react';
+
 
 export default function Gauge({ min, max, lim, value}) {
 
+    const textColor = '#666'
+    const needlecolor = useColorModeValue('white','black')
 
     const segmentstop = (min,max,lim,value) => {
         var segment_stops = []
@@ -52,15 +56,15 @@ export default function Gauge({ min, max, lim, value}) {
 
         var segment_labels = []
         if(lim > value){
-            segment_labels = [{ text:'0',position:'OUTSIDE',color:"black"},{color:"white"},{color:"white"},{color:"white"},{color:"white"},{ text:max,position:'OUTSIDE',color:"black"}]
+            segment_labels = [{ text:'0',position:'OUTSIDE',color:textColor},{color:"white"},{color:"white"},{color:"white"},{color:"white"},{ text:max,position:'OUTSIDE',color:textColor}]
             return segment_labels
         }
         else if(lim == value){
-            segment_labels = [{ text:'0',position:'OUTSIDE',color:"black"},{color:"white"},{color:"white"},{color:"white"},{ text:max,position:'OUTSIDE',color:"black"}]            
+            segment_labels = [{ text:'0',position:'OUTSIDE',color:textColor},{color:"white"},{color:"white"},{color:"white"},{ text:max,position:'OUTSIDE',color:textColor}]            
             return segment_labels
         }
         else{
-            segment_labels = [{ text:'0',position:'OUTSIDE',color:"black"},{color:"white"},{color:"white"},{color:"white"},{color:"white"},{ text:max,position:'OUTSIDE',color:"black"}]            
+            segment_labels = [{ text:'0',position:'OUTSIDE',color:textColor},{color:"white"},{color:"white"},{color:"white"},{color:"white"},{ text:max,position:'OUTSIDE',color:textColor}]            
             return segment_labels
         }
 
@@ -69,23 +73,23 @@ export default function Gauge({ min, max, lim, value}) {
 
 return(  
     
-  
+  <div style={{marginLeft:'55px'}}>
     <ReactSpeedometer
-        width={145}
-        height={100}
-        ringWidth={20} 
+        width={200}
+        height={150}
+        ringWidth={35} 
         minValue={min}
         maxValue={max}
         value={value}    
-        segments={2}
         needleHeightRatio={0.2}
-        needleColor="white"
+        needleColor={needlecolor}
         customSegmentStops={segmentstop(min,max,lim,value)}
         customSegmentLabels={segmentlabel(min,max,lim,value)}
         segmentColors={segmentcolor(lim,value)}
         maxSegmentLabels={1}
-        valueTextFontSize='10px'
-        labelFontSize='8px'
+        valueTextFontSize='14px'
+        labelFontSize='12px'
     />
+    </div>
 );
 }

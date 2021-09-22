@@ -1,14 +1,12 @@
 import React from "react";
 import {
-  Box,
-  Stack,
   Flex,
   Text,
-  Button,
-  useDisclosure
+  useColorModeValue
 } from "@chakra-ui/react";
 const Header = (props) => {
-
+  const textColor = useColorModeValue('black','white')
+  const backColor = useColorModeValue('white','#1a202c')
   return (
     <Flex
       as="nav"
@@ -16,8 +14,9 @@ const Header = (props) => {
       justify="center"
       wrap="wrap"
       padding={0}
-      bg="white"
-      color="black"
+      bg={backColor}
+      color={textColor}
+      marginBottom='20px'
       {...props}
     >
       <Flex align="center" >
