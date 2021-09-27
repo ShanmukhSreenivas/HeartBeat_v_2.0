@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState, useEffect} from 'react';
 import {
   IconButton,
   Grid,
@@ -62,6 +62,13 @@ function StatCard({ bgColor }) {
   );
 }
 
+function getWindowDimensions() {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height
+  };
+}
 
 function RowHeadings({ heading, icon, bgColor }) {
   return (
@@ -87,9 +94,14 @@ function RowHeadings({ heading, icon, bgColor }) {
 }
 function App() {
   // const highlightColor = useColorModeValue('blue.200', 'blue.800');
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
   const highlightColor = useColorModeValue('white', 'black');
   const textColor = useColorModeValue('black', 'white');
 
+  useEffect(()=> {
+    setWidth(windowDimensions.width)
+    console.log(width)
+  });
   return (
     <>
       <ColorModeSwitcher position="fixed" right="2" bottom="2" />
