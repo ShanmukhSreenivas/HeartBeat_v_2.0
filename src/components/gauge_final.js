@@ -87,7 +87,7 @@ return(
         customSegmentLabels={segmentlabel(min,max,lim,value)}
         segmentColors={segmentcolor(lim,value)}
         maxSegmentLabels={1}
-        valueTextFontSize='14px'
+        valueTextFontSize='18px'
         labelFontSize='12px'
     />
     </div>
