@@ -1,7 +1,6 @@
-import React  from 'react';
+import React, { useState }  from 'react';
 import {
   ChakraProvider,
-  Box,
   theme,
   Tabs,
   TabList,
@@ -16,21 +15,23 @@ import Prototype from './components/prototype';
 
 function App() {
 
+  const [width,setWidth] = useState()
+
   return (
     <ChakraProvider theme={theme}>
       <span>
-      <Header w="100%"/>
-        <Tabs isFitted isLazy variant="enclosed">
+      <Header style={{width:width}}/>
+        <Tabs isFitted isLazy variant="enclosed" style={{width:width}} colorScheme='yellow'>
           <TabList mb="1em">
-            <Tab>KLIA</Tab>
-            <Tab>klia2</Tab>
+            <Tab style={{fontSize:'20px'}}>KLIA</Tab>
+            <Tab style={{fontSize:'20px'}}>klia2</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
-              <Prototype />
+              <Prototype handleCallback={screenwidth => setWidth(screenwidth)} />
             </TabPanel>
             <TabPanel>
-              <Prototype />
+              <Prototype handleCallback={screenwidth => setWidth(screenwidth)}/>
             </TabPanel>
           </TabPanels>
         </Tabs>

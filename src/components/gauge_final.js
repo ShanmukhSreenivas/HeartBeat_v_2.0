@@ -1,5 +1,5 @@
 import ReactSpeedometer from "react-d3-speedometer"
-import { useColorModeValue } from '@chakra-ui/react';
+import { useColorModeValue } from '@chakra-ui/react'
 
 
 export default function Gauge({ min, max, lim, value}) {
@@ -16,7 +16,7 @@ export default function Gauge({ min, max, lim, value}) {
         }
         else if( max>= 100 && max < 200){
             adder = 2
-        } 
+        }
         else if (max > 2 && max < 100){
             adder = 1
         }

@@ -1,4 +1,4 @@
-import React ,{useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   IconButton,
   Grid,
@@ -27,6 +27,17 @@ import {
 } from 'react-icons/fa';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
 import Gauge from './gauge_final'
+
+
+const stringConverter = (num) => {
+  num=num.toString();
+  var lastThree = num.substring(num.length-3);
+  var otherNumbers = num.substring(0,num.length-3);
+  if(otherNumbers != '')
+      lastThree = ',' + lastThree;
+  var res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+  return res
+  }
 function StatCard({ bgColor }) {
   return (
     <Stat 
@@ -36,7 +47,7 @@ function StatCard({ bgColor }) {
       size = {['sm','md','lg']}
       marginLeft='30px'
     >
-      <StatNumber fontSize={["md", "lg", "3xl"]}>1342</StatNumber>
+      <StatNumber fontSize={["md", "lg", "3xl"]}>{stringConverter(1342)}</StatNumber>
       <StatHelpText fontSize={["sm", "md", "xl"]}>
         <IconButton
           size="sm"
@@ -44,9 +55,9 @@ function StatCard({ bgColor }) {
           aria-label={`departure flight`}
           variant="ghost"
           color="current"
-          icon={<FaPlaneDeparture />}
+          icon={<FaPlaneDeparture style={{color:'#015da9'}}/>}
         />
-        - 1132
+        {stringConverter(1132)}
         <br />
         <IconButton
           size="sm"
@@ -54,27 +65,44 @@ function StatCard({ bgColor }) {
           aria-label={`departure flight`}
           variant="ghost"
           color="current"
-          icon={<FaPlaneArrival />}
+          icon={<FaPlaneArrival style={{color:'#015da9'}}/>}
         />{' '}
-        - 254
+        {stringConverter(254)}
       </StatHelpText>
     </Stat>
   );
 }
 
-function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
-  return {
-    width,
-    height
-  };
-}
 
 function RowHeadings({ heading, icon, bgColor }) {
   return (
     <Text 
     fontSize="lg"
-    align="center"
+    align='left'
+    py="3"
+    bg={bgColor}
+    whiteSpace="nowrap"
+    wordBreak="revert"
+    borderRadius='5px'
+
+>
+      <IconButton
+        size="lg"
+        fontSize="lg"
+        aria-label={`departure flight`}
+        variant="ghost"
+        color="current"
+        icon={icon}
+      />
+      {heading}
+    </Text>
+  );
+}
+function TimeHeadings({ heading, icon, bgColor }) {
+  return (
+    <Text 
+    fontSize="lg"
+    align='center'
     py="3"
     bg={bgColor}
     whiteSpace="nowrap"
@@ -92,16 +120,20 @@ function RowHeadings({ heading, icon, bgColor }) {
     </Text>
   );
 }
-function App() {
+
+function Prototype({ handleCallback }) {
+
+  const [screenwidth,setScreenWidth] = useState()
   // const highlightColor = useColorModeValue('blue.200', 'blue.800');
-  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
   const highlightColor = useColorModeValue('white', 'black');
   const textColor = useColorModeValue('black', 'white');
 
   useEffect(()=> {
-    setWidth(windowDimensions.width)
-    console.log(width)
+    setScreenWidth(window.innerWidth)
+    handleCallback(screenwidth)
   });
+
+
   return (
     <>
       <ColorModeSwitcher position="fixed" right="2" bottom="2" />
@@ -113,42 +145,42 @@ function App() {
           bgColor='blue.200'
         />
 
-        <RowHeadings heading="0000-0800" icon={<FaCloudSun />} />
-        <RowHeadings heading="0800-1500" icon={<FaSun />} />
-        <RowHeadings heading="1500-2100" icon={<FaCloudMoon />} />
-        <RowHeadings heading="2100-2400" icon={<FaMoon />} />
+        <TimeHeadings heading="0000-0800" icon={<FaCloudSun style={{color:'#015da9'}}/>} />
+        <TimeHeadings heading="0800-1500" icon={<FaSun style={{color:'#015da9'}}/>} />
+        <TimeHeadings heading="1500-2100" icon={<FaCloudMoon style={{color:'#015da9'}}/>} />
+        <TimeHeadings heading="2100-2400" icon={<FaMoon style={{color:'#015da9'}}/>} />
 
-        <RowHeadings heading="PAX flight" icon={<FaPlane />} />
+        <RowHeadings heading="PAX flight" icon={<FaPlane style={{color:'#015da9'}}/>} />
           <StatCard statNumber={1342} />
           <StatCard statNumber={1342} />
           <StatCard statNumber={1342} />
           <StatCard statNumber={1342} />
-          <RowHeadings heading="PAX" icon={<FaUsers />} />
+          <RowHeadings heading="PAX" icon={<FaUsers style={{color:'#015da9'}}/>} />
           <StatCard statNumber={1342} />
           <StatCard statNumber={1342} />
           <StatCard statNumber={1342} />
           <StatCard statNumber={1342} />
-          <RowHeadings heading="Cargo flight" icon={<FaTruckLoading />} />
+          <RowHeadings heading="Cargo flight" icon={<FaTruckLoading style={{color:'#015da9'}}/>} />
           <StatCard statNumber={1342} />
           <StatCard statNumber={1342} />
           <StatCard statNumber={1342} />
           <StatCard statNumber={1342} />
-        <RowHeadings heading="P Mover" icon={<FaBus />} />
+        <RowHeadings heading="P Mover" icon={<FaBus style={{color:'#015da9'}}/>} />
               <Gauge min={0} max={303} lim={250} value={250} />
               <Gauge min={0} max={303} lim={200} value={250} />
               <Gauge min={0} max={303} lim={200} value={190} />
               <Gauge min={0} max={303} lim={200} value={260} />
-        <RowHeadings heading="P BB" icon={<FaBus />} />
+        <RowHeadings heading="P BB" icon={<FaBus style={{color:'#015da9'}}/>} />
         <Gauge min={0} max={78} lim={70} value={75}/>
               <Gauge min={0} max={78} lim={60} value={75}/>
               <Gauge min={0} max={78} lim={60} value={55}/>
               <Gauge min={0} max={78} lim={73} value={75}/>
-        <RowHeadings heading="P Vroom" icon={<FaRestroom />} />
+        <RowHeadings heading="P Vroom" icon={<FaRestroom style={{color:'#015da9'}}/>} />
         <Gauge min={0} max={129} lim={120} value={60}/>
               <Gauge min={0} max={129} lim={90} value={60}/>
               <Gauge min={0} max={129} lim={90} value={60}/>
               <Gauge min={0} max={129} lim={120} value={125}/>
-        <RowHeadings heading="KATS" icon={<FaTrain />} />
+        <RowHeadings heading="KATS" icon={<FaTrain style={{color:'#015da9'}}/>} />
         <Gauge min={0} max={129} lim={120} value={60}/>
               <Gauge min={0} max={129} lim={120} value={125}/>
               <Gauge min={0} max={129} lim={90} value={60}/>
@@ -159,22 +191,22 @@ function App() {
           icon={<FaPlaneDeparture />}
           bgColor='blue.200'
         />
-        <RowHeadings heading="0000-0800" icon={<FaCloudSun />} />
-        <RowHeadings heading="0800-1500" icon={<FaSun />} />
-        <RowHeadings heading="1500-2100" icon={<FaCloudMoon />} />
-        <RowHeadings heading="2100-2400" icon={<FaMoon />} />
+        <TimeHeadings heading="0000-0800" icon={<FaCloudSun style={{color:'#015da9'}}/>} />
+        <TimeHeadings heading="0800-1500" icon={<FaSun style={{color:'#015da9'}}/>} />
+        <TimeHeadings heading="1500-2100" icon={<FaCloudMoon style={{color:'#015da9'}}/>} />
+        <TimeHeadings heading="2100-2400" icon={<FaMoon style={{color:'#015da9'}}/>} />
 
-        <RowHeadings heading="Check In" icon={<FaMoneyCheck />} />
+        <RowHeadings heading="Check In" icon={<FaMoneyCheck style={{color:'#015da9'}}/>} />
         <Gauge min={0} max={303} lim={250} value={250}/>
               <Gauge min={0} max={303} lim={200} value={250}/>
               <Gauge min={0} max={303} lim={200} value={190}/>
               <Gauge min={0} max={303} lim={200} value={260}/>
-        <RowHeadings heading="Security" icon={<FaShieldAlt />} />
+        <RowHeadings heading="Security" icon={<FaShieldAlt style={{color:'#015da9'}}/>} />
         <Gauge min={0} max={303} lim={250} value={250}/>
               <Gauge min={0} max={303} lim={200} value={250}/>
               <Gauge min={0} max={303} lim={200} value={190}/>
               <Gauge min={0} max={303} lim={200} value={260}/>
-        <RowHeadings heading="Immigration" icon={<FaPassport />} />
+        <RowHeadings heading="Immigration" icon={<FaPassport style={{color:'#015da9'}}/>} />
         <Gauge min={0} max={303} lim={250} value={250}/>
               <Gauge min={0} max={303} lim={200} value={250}/>
               <Gauge min={0} max={303} lim={200} value={190}/>
@@ -185,16 +217,16 @@ function App() {
           bgColor='blue.200'
         />
 
-        <RowHeadings heading="0000-0800" icon={<FaCloudSun />} />
-        <RowHeadings heading="0800-1500" icon={<FaSun />} />
-        <RowHeadings heading="1500-2100" icon={<FaCloudMoon />} />
-        <RowHeadings heading="2100-2400" icon={<FaMoon />} />
-        <RowHeadings heading="Immigration" icon={<FaPassport />} />
+        <TimeHeadings heading="0000-0800" icon={<FaCloudSun style={{color:'#015da9'}}/>} />
+        <TimeHeadings heading="0800-1500" icon={<FaSun style={{color:'#015da9'}}/>} />
+        <TimeHeadings heading="1500-2100" icon={<FaCloudMoon style={{color:'#015da9'}}/>} />
+        <TimeHeadings heading="2100-2400" icon={<FaMoon style={{color:'#015da9'}}/>} />
+        <RowHeadings heading="Immigration" icon={<FaPassport style={{color:'#015da9'}}/>} />
               <Gauge min={0} max={303} lim={250} value={250}/>
               <Gauge min={0} max={303} lim={200} value={250}/>
               <Gauge min={0} max={303} lim={200} value={190}/>
               <Gauge min={0} max={303} lim={200} value={260}/>
-        <RowHeadings heading="Luggage Claim" icon={<FaLuggageCart />} />
+        <RowHeadings heading="Luggage Claim" icon={<FaLuggageCart style={{color:'#015da9'}}/>} />
         <Gauge min={0} max={303} lim={250} value={250}/>
               <Gauge min={0} max={303} lim={200} value={250}/>
               <Gauge min={0} max={303} lim={200} value={190}/>
@@ -204,4 +236,4 @@ function App() {
   );
 }
 
-export default App;
+export default Prototype;
