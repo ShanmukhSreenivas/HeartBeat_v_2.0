@@ -20,7 +20,7 @@ function App() {
   return (
     <ChakraProvider theme={theme}>
       <span>
-      <Header style={{width:width}}/>
+      <Header screenWidth={width}/>
         <Tabs isFitted isLazy variant="enclosed" style={{width:width}} colorScheme='yellow'>
           <TabList mb="1em">
             <Tab style={{fontSize:'20px'}}>KLIA</Tab>

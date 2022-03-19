@@ -4,40 +4,44 @@ import {
   IconButton,
   Text,
   Image,
+  Box,
+  Spacer,
   useColorModeValue
 } from "@chakra-ui/react";
 
-const Header = (props) => {
+const Header = ({ screenWidth }) => {
   const textColor = useColorModeValue('black','white')
   const backColor = useColorModeValue('white','#1a202c')
 
   return (
-    <Flex
-      as="nav"
-      align="center"
-      justify="center"
-      wrap="wrap"
-      padding={0}
-      bg={backColor}
-      color={textColor}
-      marginBottom='20px'
-      {...props}
-    >
-      <Flex align="center" >
-        <IconButton
-          size="xl"
-          aria-label={`MAHB`}
-          variant="ghost"
-          color="current"
-          icon={<Image src='.../public/MAHBLogo.png' />}  
-        />
-        <Text fontSize="3xl" letterSpacing={"tighter"}>
-          Operational Heartbeat Dashboard
-        </Text>
+    <Flex height='5em' marginTop='10px' bgColor='#0066ae' width={screenWidth}>
+      <Flex justifyContent='space-between' width='4%' marginLeft='0.5%'>
+        <Box height='100%' width='10%' bgColor={backColor} />
+        <Box height='100%' width='10%' bgColor={backColor} />
+        <Box height='100%' width='10%' bgColor={backColor} />
+        <Box height='100%' width='10%' bgColor={backColor} />
+        <Box height='100%' width='10%' bgColor={backColor} />
       </Flex>
-
+      <Flex justifyContent='center' alignItems='center' marginLeft='2%' wrap='nowrap'>
+      <Text fontSize='3xl' color="white" wrap='nowrap'>Operational Dashboard</Text>
+      </Flex>
+      <Spacer />
+      <Flex bgColor={backColor} justifyContent='center' width='14%'>
+      <Image
+        height='90%'
+        marginRight='5%'
+        marginLeft='5%'
+        objectFit="cover"
+        src="./MAHBLogo.png"
+      />
+      </Flex>
     </Flex>
   );
 };
 
 export default Header;
+
+
+
+/*
+*/
